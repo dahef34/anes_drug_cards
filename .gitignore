@@ -54,6 +54,10 @@ lib/generated_plugin_registrant.dart
 # See https://dart.dev/guides/libraries/private-files#pubspeclock
 #pubspec.lock
 
+#Firestore related
+**/android/app/key.jks
+**/android/app/google-services.json
+
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
