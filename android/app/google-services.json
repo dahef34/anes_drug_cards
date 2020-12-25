@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "479502132562",
+    "firebase_url": "https://drug-cards-987ad.firebaseio.com",
+    "project_id": "drug-cards-987ad",
+    "storage_bucket": "drug-cards-987ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479502132562:android:2aa7c33ae0d5a13d2b068b",
+        "android_client_info": {
+          "package_name": "com.usuapps.drugcards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479502132562-ckse165amcebqhq839404vc8ullethaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbn2x5fT1mnKJWX9INuv5URZhBywQIhJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479502132562-ckse165amcebqhq839404vc8ullethaq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479502132562:android:ae67959ca0166bdf2b068b",
+        "android_client_info": {
+          "package_name": "com.usuapps.drugs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479502132562-hq7kk0bgbk0mvm0e5t47ca8prbi26lft.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.usuapps.drugs",
+            "certificate_hash": "734ebfaecfd9eb05f353703f060fabcae6efef12"
+          }
+        },
+        {
+          "client_id": "479502132562-ckse165amcebqhq839404vc8ullethaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbn2x5fT1mnKJWX9INuv5URZhBywQIhJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479502132562-ckse165amcebqhq839404vc8ullethaq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

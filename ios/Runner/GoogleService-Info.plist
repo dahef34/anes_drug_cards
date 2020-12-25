@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>479502132562-jr592vqhbd2rhht22i49r7feke1s0qvo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.479502132562-jr592vqhbd2rhht22i49r7feke1s0qvo</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>479502132562-hq7kk0bgbk0mvm0e5t47ca8prbi26lft.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDgCK_S7243aqj_a0tYgTnKTMJvTT3XDcA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>479502132562</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.usuapps.drugs</string>
+	<key>PROJECT_ID</key>
+	<string>drug-cards-987ad</string>
+	<key>STORAGE_BUCKET</key>
+	<string>drug-cards-987ad.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:479502132562:ios:8f3caf8e533c73c42b068b</string>
+	<key>DATABASE_URL</key>
+	<string>https://drug-cards-987ad.firebaseio.com</string>
+</dict>
+</plist>
