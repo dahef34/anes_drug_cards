@@ -34,15 +34,9 @@
 			<!-- TODO Replace this value: -->
 			<!-- Replace by your google reversed client id -->
 			<string>com.googleusercontent.apps.479502132562-jr592vqhbd2rhht22i49r7feke1s0qvo</string>
-			<string>fb5445184465******</string>   <!-- fb+Your_fb_app_id -->
 		</array>
 	</dict>
 	</array>
-
-	<key>FacebookAppID</key>
-	<string>544514846*******</string>    <!-- replace by your facebook app id -->
-	<key>FacebookDisplayName</key>
-	<string>News Hour</string>					<!-- Replace by the app name that you have registered on developer.facebook.com -->
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
