@@ -4,7 +4,7 @@
 *.pyc
 *.swp
 *.jks
-google-services.json
+**/google-services.json
 .DS_Store
 .atom/
 .buildlog/
