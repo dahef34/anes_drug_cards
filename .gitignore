@@ -5,7 +5,7 @@
 *.swp
 *.jks
 **/google-services.json
-**/GoogleService-info.plist
+**/GoogleService-Info.plist
 **/Info.plist
 .DS_Store
 .atom/
