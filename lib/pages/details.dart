@@ -1,16 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/style.dart';
-import 'package:news_app/blocs/user_bloc.dart';
 import 'package:news_app/models/category_data.dart';
-import 'package:news_app/models/config.dart';
-import 'package:news_app/models/icons_data.dart';
 import 'package:news_app/pages/comments.dart';
 import 'package:news_app/utils/next_screen.dart';
-import 'package:provider/provider.dart' as provider;
-import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -72,16 +66,8 @@ class _DetailsPageState extends State<DetailsPage> {
     super.initState();
   }
 
-  void _handleShare(title) {
-    Share.share(title,
-        subject:
-            'Check out this app to explore more. App link: https://play.google.com/store/apps/details?id=${Config().androidPacakageName}');
-  }
-
   @override
   Widget build(BuildContext context) {
-    final UserBloc ub = provider.Provider.of<UserBloc>(context);
-
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -109,21 +95,6 @@ class _DetailsPageState extends State<DetailsPage> {
                 Navigator.pop(context);
               },
             ),
-            actions: <Widget>[
-              // IconButton(
-              //   icon: Icon(
-              //     Icons.share,
-              //     size: 22,
-              //     color: Colors.white,
-              //   ),
-              //   onPressed: () {
-              //     _handleShare(title);
-              //   },
-              // ),
-              SizedBox(
-                width: 5,
-              )
-            ],
           ),
           SliverFillRemaining(
               hasScrollBody: true,
@@ -158,18 +129,6 @@ class _DetailsPageState extends State<DetailsPage> {
                                   ),
                                 )),
                             Spacer(),
-                            // IconButton(
-                            //   icon: _buildLoveIcon(ub.uid),
-                            //   onPressed: () {
-                            //     ub.handleLoveIconClick(timestamp);
-                            //   },
-                            // ),
-                            // IconButton(
-                            //   icon: _buildBookmarkIcon(ub.uid),
-                            //   onPressed: () {
-                            //     ub.handleBookmarkIconClick(context, timestamp);
-                            //   },
-                            // )
                           ],
                         ),
                         SizedBox(
@@ -259,54 +218,6 @@ class _DetailsPageState extends State<DetailsPage> {
               )))
         ],
       ),
-    );
-  }
-
-  Widget _buildLoves(loves) {
-    return Text(
-      '${loves.toString()} People like this',
-      style: TextStyle(color: Colors.black38, fontSize: 13),
-    );
-  }
-
-  Widget _buildLoveIcon(uid) {
-    return StreamBuilder(
-      stream:
-          FirebaseFirestore.instance.collection('users').doc(uid).snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snap) {
-        if (!snap.hasData) return LoveIcon().normal;
-        try {
-          dynamic d = snap.data.get(FieldPath(['loved items']));
-          if (d.contains(timestamp)) {
-            return LoveIcon().bold;
-          } else {
-            return LoveIcon().normal;
-          }
-        } on StateError catch (e) {
-          return LoveIcon().normal;
-        }
-      },
-    );
-  }
-
-  Widget _buildBookmarkIcon(uid) {
-    return StreamBuilder(
-      stream:
-          FirebaseFirestore.instance.collection('users').doc(uid).snapshots(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        if (!snapshot.hasData) return BookmarkIcon().normal;
-        try {
-          dynamic e = snapshot.data.get(FieldPath(['bookmarked items']));
-          if (e.contains(timestamp)) {
-            return BookmarkIcon().bold;
-          } else {
-            return BookmarkIcon().normal;
-          }
-        } on StateError catch (e) {
-          return BookmarkIcon().normal;
-        }
-      },
     );
   }
 }

@@ -61,10 +61,11 @@ class _HomePageState extends State<HomePage> {
   );
 
   void checkInternet() async {
-    final InternetBloc ib = provider.Provider.of<InternetBloc>(context, listen: false);
+    final InternetBloc ib =
+        provider.Provider.of<InternetBloc>(context, listen: false);
     await ib.checkInternet();
     ib.hasInternet == false
-        ? _scaffoldKey.currentState.showSnackBar(_snackBar)
+        ? ScaffoldMessenger.of(context).showSnackBar(_snackBar)
         : print('Internet is Available');
   }
 
@@ -85,186 +86,183 @@ class _HomePageState extends State<HomePage> {
     );
 
     Future.delayed(Duration(milliseconds: 0)).then((_) {
-      final UserBloc ub = provider.Provider.of<UserBloc>(context, listen: false);
-      final BookmarkBloc bb = provider.Provider.of<BookmarkBloc>(context, listen: false);
-      
+      final UserBloc ub =
+          provider.Provider.of<UserBloc>(context, listen: false);
+      final BookmarkBloc bb =
+          provider.Provider.of<BookmarkBloc>(context, listen: false);
+
       ub.getUserData();
       bb.getData();
       checkInternet();
-      
-      
-
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final NotificationBloc nb = provider.Provider.of<NotificationBloc>(context, listen: false);
-    final Shader linearGradient = LinearGradient(
-      colors: <Color>[Color(0xffff0000), Color(0xff0000ff)],
-    ).createShader(Rect.fromLTWH(0.0, 0.0, 250.0, 150.0));
+    final NotificationBloc nb =
+        provider.Provider.of<NotificationBloc>(context, listen: false);
 
     return DefaultTabController(
       length: 10,
       child: Scaffold(
         drawer: DrawerMenu(),
         key: _scaffoldKey,
-        body:NestedScrollView(
-    controller: _scrollController,
-    headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-      return <Widget>[
-        new SliverAppBar(
-          automaticallyImplyLeading: false,
-          centerTitle: false,
-          titleSpacing: 0,
-          
-          title: RichText(
-            text: TextSpan(
-              text: 'USU ',
-              style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black),
-              children: <TextSpan>[
-                TextSpan(
-                    text: 'Drug',
+        body: NestedScrollView(
+          controller: _scrollController,
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              new SliverAppBar(
+                automaticallyImplyLeading: false,
+                centerTitle: false,
+                titleSpacing: 0,
+                title: RichText(
+                  text: TextSpan(
+                    text: 'USU ',
                     style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Colors.blue[900],
-                    ),
-                    ),
-                TextSpan(
-                  text: 'Cards',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Colors.red[900],
+                        fontFamily: 'Poppins',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Drug',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Colors.blue[900],
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'Cards',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Colors.red[900],
+                        ),
+                      )
+                    ],
                   ),
-                )
+                ),
+                leading: IconButton(
+                  icon: Icon(
+                    AntDesign.menu_fold,
+                    size: 20,
+                    color: Colors.black87,
+                  ),
+                  onPressed: () {
+                    _scaffoldKey.currentState.openDrawer();
+                  },
+                ),
+                elevation: 1,
+                actions: <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      AntDesign.search1,
+                      color: Colors.black,
+                      size: 20,
+                    ),
+                    onPressed: () {
+                      nextScreen(context, SearchPage());
+                    },
+                  ),
+                  Badge(
+                    position: BadgePosition.topEnd(top: 7, end: 9),
+                    badgeColor: Colors.redAccent,
+                    animationType: BadgeAnimationType.fade,
+                    showBadge:
+                        nb.savedNlength < nb.notificationLength ? true : false,
+                    badgeContent: Text(
+                      nb.notificationFinalLength.toString(),
+                      style: TextStyle(fontSize: 10, color: Colors.white),
+                    ),
+                    child: IconButton(
+                      icon: Icon(Icons.notifications_none),
+                      onPressed: () {
+                        nb.saveNlength();
+                        nextScreen(context, NotificationPage());
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  )
+                ],
+                pinned: true,
+                floating: true,
+                forceElevated: innerBoxIsScrolled,
+                bottom: TabBar(
+                  //labelStyle: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                  controller: _tabController,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  labelColor: Colors.blueAccent[200],
+                  unselectedLabelColor: Color(0xff5f6368), //niceish grey
+                  isScrollable: true,
+                  onTap: (index) {
+                    checkInternet();
+                  },
+                  indicator: MD2Indicator(
+                      //it begins here
+                      indicatorHeight: 3,
+                      indicatorColor: Colors.blueAccent[900],
+                      indicatorSize: MD2IndicatorSize
+                          .normal //3 different modes tiny-normal-full
+                      ),
+                  tabs: <Widget>[
+                    Tab(
+                      text: "Home",
+                    ),
+                    Tab(
+                      text: categories[0],
+                    ),
+                    Tab(
+                      text: categories[1],
+                    ),
+                    Tab(
+                      text: categories[2],
+                    ),
+                    Tab(
+                      text: categories[3],
+                    ),
+                    Tab(
+                      text: categories[4],
+                    ),
+                    Tab(
+                      text: categories[5],
+                    ),
+                    Tab(
+                      text: categories[6],
+                    ),
+                    Tab(
+                      text: categories[7],
+                    ),
+                    Tab(
+                      text: categories[8],
+                    ),
+                  ],
+                ),
+              ),
+            ];
+          },
+          body: WillPopScope(
+            onWillPop: () {
+              return SystemNavigator.pop();
+            },
+            child: TabBarView(
+              children: <Widget>[
+                Tab0(),
+                Tab1(),
+                Tab2(),
+                Tab3(),
+                Tab4(),
+                Tab5(),
+                Tab6(),
+                Tab7(),
+                Tab8(),
+                Tab9(),
               ],
+              controller: _tabController,
             ),
-          ),
-          leading: IconButton(
-            icon: Icon(
-              AntDesign.menu_fold,
-              size: 20,
-              color: Colors.black87,
-            ),
-            onPressed: () {
-              _scaffoldKey.currentState.openDrawer();
-            },
-          ),
-          elevation: 1,
-          
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                AntDesign.search1,
-                color: Colors.black,
-                size: 20,
-              ),
-              onPressed: () {
-                nextScreen(context, SearchPage());
-              },
-            ),
-            Badge(
-              position: BadgePosition.topEnd(top: 7, end: 9),
-              badgeColor: Colors.redAccent,
-              animationType: BadgeAnimationType.fade,
-              showBadge: nb.savedNlength < nb.notificationLength ? true : false,
-              badgeContent: Text(nb.notificationFinalLength.toString(), style: TextStyle(fontSize: 10, color: Colors.white),),
-              child: IconButton(
-              icon: Icon(Icons.notifications_none),
-              
-              onPressed: () {
-                nb.saveNlength();
-                nextScreen(context, NotificationPage());
-              },
-            ),
-            ),
-            SizedBox(width: 5,)
-          ],
-          pinned: true,
-          floating: true,
-          forceElevated: innerBoxIsScrolled,
-          
-          bottom: TabBar(
-            //labelStyle: GoogleFonts.poppins(fontWeight: FontWeight.w500),
-            controller: _tabController,
-            indicatorSize: TabBarIndicatorSize.label,
-            labelColor: Colors.blueAccent[200],
-            unselectedLabelColor: Color(0xff5f6368), //niceish grey
-            isScrollable: true,
-            onTap: (index) {
-              checkInternet();
-            },
-            indicator: MD2Indicator(
-                //it begins here
-                indicatorHeight: 3,
-                indicatorColor: Colors.blueAccent[900],
-                indicatorSize:
-                    MD2IndicatorSize.normal //3 different modes tiny-normal-full
-                ),
-            tabs: <Widget>[
-              Tab(
-                text: "Home",
-              ),
-              Tab(
-                text: categories[0],
-              ),
-              Tab(
-                text: categories[1],
-              ),
-              Tab(
-                text: categories[2],
-              ),
-              Tab(
-                text: categories[3],
-              ),
-              Tab(
-                text: categories[4],
-              ),
-              Tab(
-                text: categories[5],
-              ),
-                Tab(
-                  text: categories[6],
-                ),
-                Tab(
-                  text: categories[7],
-                ),
-                  Tab(
-                  text: categories[8],
-                  ),
-            ],
           ),
         ),
-      ];
-    },
-    body: WillPopScope(
-                onWillPop: (){
-                  return SystemNavigator.pop();
-                },
-                child: TabBarView(
-            children: <Widget>[
-              Tab0(),
-              Tab1(),
-              Tab2(),
-              Tab3(),
-              Tab4(),
-              Tab5(),
-              Tab6(),
-              Tab7(),
-              Tab8(),
-              Tab9(),
-            ],
-            controller: _tabController,
-          ),
-        ),
-  ),
-        
-
       ),
     );
   }

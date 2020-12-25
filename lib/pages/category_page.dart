@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:news_app/models/category_data.dart';
 import 'package:news_app/pages/category_item_page.dart';
 import 'package:news_app/utils/next_screen.dart';
-import 'package:provider/provider.dart' as provider;
-import 'package:news_app/blocs/recent_bloc.dart';
-import 'package:news_app/models/category_data.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({Key key}) : super(key: key);
@@ -14,13 +11,12 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
-
   double paddingValue = 20;
   List data = [];
 
   @override
   void initState() {
-    Future.delayed(Duration(milliseconds: 0)).then((f){
+    Future.delayed(Duration(milliseconds: 0)).then((f) {
       setState(() {
         paddingValue = 0;
       });
@@ -33,7 +29,6 @@ class _CategoryPageState extends State<CategoryPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
@@ -42,37 +37,33 @@ class _CategoryPageState extends State<CategoryPage> {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(left: 20),
-            child: Text('Categories', style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600
-            ),),
+            child: Text(
+              'Categories',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+            ),
           ),
-
           Expanded(
-              child: GridView.count(
+            child: GridView.count(
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               childAspectRatio: 1,
               padding: EdgeInsets.only(left: 20, top: 20, right: 20),
-              children: List.generate(categories.length, (index){
+              children: List.generate(categories.length, (index) {
                 return InkWell(
-                    child: Hero(
-                      tag: 'category$index',
-                      child: Container(
+                  child: Hero(
+                    tag: 'category$index',
+                    child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        
-                        borderRadius: BorderRadius.circular(12),
-                        color: categoryColors[index],
-                        boxShadow: <BoxShadow>[
-                          BoxShadow(
-                            color: Colors.grey[300],
-                            blurRadius: 3,
-                            offset: Offset(3, 3)
-                          )
-                        ]
-                      ),
+                          borderRadius: BorderRadius.circular(12),
+                          color: categoryColors[index],
+                          boxShadow: <BoxShadow>[
+                            BoxShadow(
+                                color: Colors.grey[300],
+                                blurRadius: 3,
+                                offset: Offset(3, 3))
+                          ]),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -80,49 +71,45 @@ class _CategoryPageState extends State<CategoryPage> {
                           AnimatedPadding(
                             duration: Duration(milliseconds: 600),
                             padding: EdgeInsets.all(paddingValue),
-                              child: Container(
-                                
+                            child: Container(
                                 height: 60,
                                 width: 60,
-                                
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  shape: BoxShape.circle,
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                    color: Colors.white10,
-                                    blurRadius: 30,
-                                    offset: Offset(3, 3)
-                                  )
-                                ]
-                                  
-                                ),
-                                child: Icon(Icons.category, size: 30, color: Colors.black54,)
-                                ),
-                              
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                    boxShadow: <BoxShadow>[
+                                      BoxShadow(
+                                          color: Colors.white10,
+                                          blurRadius: 30,
+                                          offset: Offset(3, 3))
+                                    ]),
+                                child: Icon(
+                                  Icons.category,
+                                  size: 30,
+                                  color: Colors.black54,
+                                )),
                           ),
-                           Spacer(), 
-                          Text(categories[index], style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15
-                          ),),
-
-                          
+                          Spacer(),
+                          Text(
+                            categories[index],
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 15),
+                          ),
                         ],
                       ),
-                  ),
                     ),
-                  onTap: (){
-                    nextScreen(context, CategoryItemPage(
-                      category: categories[index],
-                      tag: 'category$index',
-                      color: categoryColors[index],
-                      description: categories[index]
-                    ));
+                  ),
+                  onTap: () {
+                    nextScreen(
+                        context,
+                        CategoryItemPage(
+                            category: categories[index],
+                            tag: 'category$index',
+                            color: categoryColors[index],
+                            description: categories[index]));
                   },
                 );
               }),
-              
             ),
           )
         ],

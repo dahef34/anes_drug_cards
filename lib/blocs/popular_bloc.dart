@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class PopularDataBloc extends ChangeNotifier {
-  
   List _popularData = [];
   List _filteredData = [];
   bool _hasData = false;
@@ -10,15 +9,14 @@ class PopularDataBloc extends ChangeNotifier {
   PopularDataBloc() {
     getData();
   }
-  
 
   List get popularData => _popularData;
   List get filteredData => _filteredData;
   bool get hasData => _hasData;
 
   Future getData() async {
-
-    QuerySnapshot snap = await Firestore.instance.collection('contents').get();
+    QuerySnapshot snap =
+        await FirebaseFirestore.instance.collection('contents').get();
     var x = snap.docs;
     _popularData.clear();
     x.forEach((f) {
@@ -28,14 +26,12 @@ class PopularDataBloc extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
   void afterSearch(value) {
     _filteredData = _popularData
-        .where((u) => (u['title'].toLowerCase().contains(value.toLowerCase())) 
-        ||  u['description'].toLowerCase().contains(value.toLowerCase()))
+        .where((u) =>
+            (u['title'].toLowerCase().contains(value.toLowerCase())) ||
+            u['description'].toLowerCase().contains(value.toLowerCase()))
         .toList();
-
 
     _filteredData.isEmpty ? _hasData = false : _hasData = true;
 
