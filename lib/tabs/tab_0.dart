@@ -13,21 +13,4 @@ class _Tab0State extends State<Tab0> {
   Widget build(BuildContext context) {
     return Container(child: VideoApp());
   }
-//     return ListView(
-//       padding: EdgeInsets.all(0),
-//       children: <Widget>[
-//
-//         SearchBar(),
-//         Center(heightFactor: 2.3,
-//             child: Image.asset('assets/usu_logo.png', height: 150,
-//             fit: BoxFit.contain)
-//         ),
-//         VideoApp(),
-//         //Featured(),
-//         //Popular(),
-//         //Recent(),
-//         //Recommanded(),
-//       ],
-//     );
-//   }
 }

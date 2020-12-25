@@ -12,6 +12,7 @@ import 'package:news_app/blocs/recent_bloc.dart';
 import 'package:news_app/blocs/recommanded_bloc.dart';
 import 'package:news_app/blocs/sign_in_bloc.dart';
 import 'package:news_app/blocs/user_bloc.dart';
+import 'package:news_app/pages/bottom.dart';
 import 'package:news_app/pages/home.dart';
 import 'package:news_app/pages/sign_up.dart';
 import 'package:provider/provider.dart' as provider;
@@ -95,6 +96,6 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SignInBloc sb = provider.Provider.of<SignInBloc>(context);
-    return sb.isSignedIn == false ? SignUpPage() : HomePage();
+    return sb.isSignedIn == false ? SignUpPage() : BottomWidget();
   }
 }
