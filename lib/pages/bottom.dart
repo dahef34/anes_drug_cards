@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'home.dart';
+import 'package:news_app/pages/obstetrics.dart';
 
 class BottomWidget extends StatefulWidget {
   BottomWidget({Key key}) : super(key: key);
@@ -17,10 +18,7 @@ class _BottomWidgetState extends State<BottomWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text(
-      'Obstetrics',
-      style: optionStyle,
-    ),
+    ObstetricsPage(),
     Text(
       'Regional',
       style: optionStyle,

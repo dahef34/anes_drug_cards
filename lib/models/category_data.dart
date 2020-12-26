@@ -11,7 +11,14 @@ final List categories = [
   'Paralytics',
   'Reversals',
   'Updates',
+];
 
+final List obCategories = ['Labor', 'Cesarean', 'Other'];
+
+final List obCategoryColors = [
+  Colors.lightBlue[400],
+  Colors.purple[400],
+  Colors.green[400]
 ];
 /*
   you can change your category here.
@@ -26,14 +33,14 @@ final List categories = [
 */
 
 final List categoryColors = [
-    Colors.yellow[200],
-    Colors.lightBlue[400],
-    Colors.blue[200],
-    Colors.purple[200],
-    Colors.grey[200],
-    Colors.green[200],
-    Colors.teal[200],
-    Colors.red[200],
-    Colors.brown[400],
-    Colors.white
-  ];
+  Colors.yellow[200],
+  Colors.lightBlue[400],
+  Colors.blue[200],
+  Colors.purple[200],
+  Colors.grey[200],
+  Colors.green[200],
+  Colors.teal[200],
+  Colors.red[200],
+  Colors.brown[400],
+  Colors.white
+];

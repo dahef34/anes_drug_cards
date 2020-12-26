@@ -1,24 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class NewsDataBloc extends ChangeNotifier {
-  List _data = [];
+class ObstetricsDataBloc extends ChangeNotifier {
+  List _recentData = [];
+  List get recentData => _recentData;
 
-  obstetricsDataBloc() {
+  ObstetricsDataBloc() {
     getData();
   }
-
-  List get data => _data;
 
   Future getData() async {
     QuerySnapshot snap =
         await FirebaseFirestore.instance.collection('obstetrics').get();
     var x = snap.docs;
-    x.removeWhere((item) => item['category'] != 'Updates');
-    _data.clear();
+    _recentData.clear();
     x.forEach((f) {
-      _data.add(f);
+      _recentData.add(f);
     });
-    //_data.shuffle();
+    _recentData.sort((a, b) => b['timestamp'].compareTo(a['timestamp']));
+    notifyListeners();
   }
 }

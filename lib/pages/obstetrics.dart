@@ -11,31 +11,21 @@ import 'package:news_app/blocs/bookmark_bloc.dart';
 import 'package:news_app/blocs/internet_bloc.dart';
 import 'package:news_app/blocs/notification_bloc.dart';
 import 'package:news_app/blocs/user_bloc.dart';
-import 'package:news_app/models/category_data.dart';
 import 'package:news_app/pages/notification.dart';
 import 'package:news_app/pages/search_page.dart';
-import 'package:news_app/tabs/tab_0.dart';
-import 'package:news_app/tabs/tab_1.dart';
-import 'package:news_app/tabs/tab_2.dart';
-import 'package:news_app/tabs/tab_3.dart';
-import 'package:news_app/tabs/tab_4.dart';
-import 'package:news_app/tabs/tab_5.dart';
-import 'package:news_app/tabs/tab_6.dart';
-import 'package:news_app/tabs/tab_7.dart';
-import 'package:news_app/tabs/tab_8.dart';
-import 'package:news_app/tabs/tab_9.dart';
+import 'package:news_app/tabs/obstetrics_tab_0.dart';
 import 'package:news_app/utils/next_screen.dart';
 import 'package:news_app/widgets/drawer.dart';
 import 'package:provider/provider.dart' as provider;
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+class ObstetricsPage extends StatefulWidget {
+  const ObstetricsPage({Key key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _ObstetricsPageState createState() => _ObstetricsPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ObstetricsPageState extends State<ObstetricsPage> {
   int currentIndex = 0;
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
   final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
@@ -104,7 +94,7 @@ class _HomePageState extends State<HomePage> {
         provider.Provider.of<NotificationBloc>(context, listen: false);
 
     return DefaultTabController(
-      length: 10,
+      length: 1,
       child: Scaffold(
         drawer: DrawerMenu(),
         key: _scaffoldKey,
@@ -208,34 +198,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                   tabs: <Widget>[
                     Tab(
-                      text: "Home",
-                    ),
-                    Tab(
-                      text: categories[0],
-                    ),
-                    Tab(
-                      text: categories[1],
-                    ),
-                    Tab(
-                      text: categories[2],
-                    ),
-                    Tab(
-                      text: categories[3],
-                    ),
-                    Tab(
-                      text: categories[4],
-                    ),
-                    Tab(
-                      text: categories[5],
-                    ),
-                    Tab(
-                      text: categories[6],
-                    ),
-                    Tab(
-                      text: categories[7],
-                    ),
-                    Tab(
-                      text: categories[8],
+                      text: "Labor",
                     ),
                   ],
                 ),
@@ -248,16 +211,7 @@ class _HomePageState extends State<HomePage> {
             },
             child: TabBarView(
               children: <Widget>[
-                Tab0(),
-                Tab1(),
-                Tab2(),
-                Tab3(),
-                Tab4(),
-                Tab5(),
-                Tab6(),
-                Tab7(),
-                Tab8(),
-                Tab9(),
+                ObstetricsTab0(),
               ],
               controller: _tabController,
             ),

@@ -7,7 +7,7 @@ import 'package:news_app/pages/comments.dart';
 import 'package:news_app/utils/next_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class DetailsPage extends StatefulWidget {
+class ObDetailsPage extends StatefulWidget {
   final String tag;
   final String category;
   final String date;
@@ -17,7 +17,7 @@ class DetailsPage extends StatefulWidget {
   final String timestamp;
   final String title;
 
-  DetailsPage(
+  ObDetailsPage(
       {Key key,
       @required this.tag,
       this.category,
@@ -30,7 +30,7 @@ class DetailsPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  _DetailsPageState createState() => _DetailsPageState(
+  _ObDetailsPageState createState() => _ObDetailsPageState(
       this.tag,
       this.category,
       this.date,
@@ -41,7 +41,7 @@ class DetailsPage extends StatefulWidget {
       this.title);
 }
 
-class _DetailsPageState extends State<DetailsPage> {
+class _ObDetailsPageState extends State<ObDetailsPage> {
   final String tag;
   final String category;
   final String date;
@@ -51,7 +51,7 @@ class _DetailsPageState extends State<DetailsPage> {
   final String timestamp;
   final String title;
 
-  _DetailsPageState(this.tag, this.category, this.date, this.description,
+  _ObDetailsPageState(this.tag, this.category, this.date, this.description,
       this.imageUrl, this.loves, this.timestamp, this.title);
 
   double rightPaddingValue = 140;
@@ -114,8 +114,8 @@ class _DetailsPageState extends State<DetailsPage> {
                                 height: 25,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(25),
-                                    color: categoryColors[
-                                        categories.indexOf(category)]),
+                                    color: obCategoryColors[
+                                        obCategories.indexOf(category)]),
                                 child: AnimatedPadding(
                                   duration: Duration(milliseconds: 1000),
                                   padding: EdgeInsets.only(

@@ -1,10 +1,10 @@
 import 'package:news_app/models/category_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/pages/details.dart';
+import 'package:news_app/pages/ob_details.dart';
 import 'package:news_app/utils/next_screen.dart';
 
-Widget categoryTabList(d, tag) {
+Widget obCategoryTabList(d, tag) {
   return ListView.separated(
     padding: EdgeInsets.all(15),
     itemCount: d.length,
@@ -24,7 +24,7 @@ Widget categoryTabList(d, tag) {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                      color: categoryColors[categories.indexOf(d[index]['category'])],
+                      color: obCategoryColors[obCategories.indexOf(d[index]['category'])],
                       blurRadius: 5,
                       offset: Offset(1, 1))
                 ]),
@@ -81,7 +81,7 @@ Widget categoryTabList(d, tag) {
         onTap: () {
           nextScreen(
               context,
-              DetailsPage(
+              ObDetailsPage(
                 tag: '$tag$index',
                 category: d[index]['category'],
                 date: d[index]['date'],

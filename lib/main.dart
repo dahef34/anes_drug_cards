@@ -13,9 +13,10 @@ import 'package:news_app/blocs/recommanded_bloc.dart';
 import 'package:news_app/blocs/sign_in_bloc.dart';
 import 'package:news_app/blocs/user_bloc.dart';
 import 'package:news_app/pages/bottom.dart';
-import 'package:news_app/pages/home.dart';
 import 'package:news_app/pages/sign_up.dart';
 import 'package:provider/provider.dart' as provider;
+
+import 'blocs/obstetrics_data_bloc.dart';
 
 //void main() => runApp(MyApp());
 void main() async {
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
         ),
         provider.ChangeNotifierProvider<RecentDataBloc>(
           create: (context) => RecentDataBloc(),
+        ),
+        provider.ChangeNotifierProvider<ObstetricsDataBloc>(
+          create: (context) => ObstetricsDataBloc(),
         ),
         provider.ChangeNotifierProvider<RecommandedDataBloc>(
           create: (context) => RecommandedDataBloc(),
