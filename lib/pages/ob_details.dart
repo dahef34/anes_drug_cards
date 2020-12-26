@@ -72,16 +72,30 @@ class _ObDetailsPageState extends State<ObDetailsPage> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            //pinned: true,
-
-            backgroundColor: Colors.white70,
+            pinned: true,
+            backgroundColor: obCategoryColors[obCategories.indexOf(category)],
             expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
+              titlePadding: EdgeInsets.zero,
+              centerTitle: true,
+              title: SizedBox(
+                height: 130,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(title, textAlign: TextAlign.center),
+                  ],
+                ),
+              ),
               background: Hero(
                 tag: tag,
-                child: Image(
-                  image: CachedNetworkImageProvider(imageUrl),
-                  fit: BoxFit.scaleDown,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 40),
+                  child: Image(
+                    image: CachedNetworkImageProvider(imageUrl),
+                    fit: BoxFit.scaleDown,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -89,7 +103,7 @@ class _ObDetailsPageState extends State<ObDetailsPage> {
               icon: Icon(
                 Icons.keyboard_backspace,
                 size: 32,
-                color: Colors.black,
+                color: Colors.white,
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -125,24 +139,10 @@ class _ObDetailsPageState extends State<ObDetailsPage> {
                                       bottom: 5),
                                   child: Text(
                                     category,
-                                    style: TextStyle(fontSize: 13),
+                                    style: TextStyle(fontSize: 13, color: Colors.white),
                                   ),
                                 )),
                             Spacer(),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        
-                        Row(
-                          children: <Widget>[
-                            Text(
-                          title,
-                          style: TextStyle(
-                              fontSize: 19, fontWeight: FontWeight.w600),
-                        ),
-                        Spacer(),
                             FlatButton.icon(
                               color: Colors.blue[300],
                               icon: Icon(Icons.comment,
@@ -158,6 +158,9 @@ class _ObDetailsPageState extends State<ObDetailsPage> {
                               },
                             )
                           ],
+                        ),
+                        SizedBox(
+                          height: 5,
                         ),
                         Html(
                           data: '''$description''',

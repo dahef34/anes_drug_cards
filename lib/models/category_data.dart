@@ -16,8 +16,8 @@ final List categories = [
 final List obCategories = ['Labor', 'Cesarean', 'Other'];
 
 final List obCategoryColors = [
-  Colors.lightBlue[400],
   Colors.purple[400],
+  Colors.red[200],
   Colors.green[400]
 ];
 /*
@@ -33,11 +33,11 @@ final List obCategoryColors = [
 */
 
 final List categoryColors = [
-  Colors.yellow[200],
+  Colors.yellow[600],
   Colors.lightBlue[400],
   Colors.blue[200],
   Colors.purple[200],
-  Colors.grey[200],
+  Colors.grey[600],
   Colors.green[200],
   Colors.teal[200],
   Colors.red[200],
