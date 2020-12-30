@@ -75,6 +75,7 @@ class _DetailsPageState extends State<DetailsPage> {
             pinned: true,
             backgroundColor: categoryColors[categories.indexOf(category)],
             expandedHeight: 200,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsets.zero,
               centerTitle: true,
@@ -111,8 +112,8 @@ class _DetailsPageState extends State<DetailsPage> {
             ),
           ),
           SliverFillRemaining(
-              hasScrollBody: true,
-              fillOverscroll: false,
+              hasScrollBody: false,
+              fillOverscroll: true,
               child: SingleChildScrollView(
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

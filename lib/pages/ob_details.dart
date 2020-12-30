@@ -73,28 +73,31 @@ class _ObDetailsPageState extends State<ObDetailsPage> {
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
+            floating: true,
+            snap: false,
             backgroundColor: obCategoryColors[obCategories.indexOf(category)],
             expandedHeight: 200,
+            collapsedHeight: 60,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: EdgeInsets.zero,
+              titlePadding: EdgeInsets.fromLTRB(0, 80, 0, 0),
               centerTitle: true,
-              title: SizedBox(
-                height: 130,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(title, textAlign: TextAlign.center),
-                  ],
-                ),
+              collapseMode: CollapseMode.parallax,
+              title: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: SizedBox(height: 40,
+                child: 
+                      Text(title, textAlign: TextAlign.center, style: 
+                      TextStyle(fontSize: 14))),
               ),
               background: Hero(
                 tag: tag,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 40),
+                  padding: const EdgeInsets.fromLTRB(0, 50, 0, 60),
                   child: Image(
                     image: CachedNetworkImageProvider(imageUrl),
                     fit: BoxFit.scaleDown,
-                    color: Colors.white,
+                    //color: Colors.white,
                   ),
                 ),
               ),
@@ -111,8 +114,8 @@ class _ObDetailsPageState extends State<ObDetailsPage> {
             ),
           ),
           SliverFillRemaining(
-              hasScrollBody: true,
-              fillOverscroll: false,
+              hasScrollBody: false,
+              fillOverscroll: true,
               child: SingleChildScrollView(
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

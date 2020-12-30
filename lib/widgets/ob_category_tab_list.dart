@@ -41,7 +41,7 @@ Widget obCategoryTabList(d, tag) {
                           Text(
                             d[index]['title'],
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                                 color: Colors.grey[800],
                                 fontWeight: FontWeight.w500),
                             maxLines: 4,
